@@ -22,6 +22,21 @@ const api = require("./api");
 
 // Server configuration below
 
+// move to .env file
+const mongoConnectionURL = "replace me";
+// TODO change database name to the name you chose
+const databaseName = "dev";
+
+// connect to mongodb
+mongoose
+  .connect(mongoConnectionURL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    dbName: databaseName,
+  })
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.log(`Error connecting to MongoDB: ${err}`));
+
 // create a new express server
 const app = express();
 
